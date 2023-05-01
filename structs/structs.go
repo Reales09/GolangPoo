@@ -20,6 +20,11 @@ func (p *Persona) editarNombre(nuevoNombre string) {
 	p.nombre = nuevoNombre
 }
 
+type Empleado struct {
+	Persona
+	sueldo float64
+}
+
 func main() {
 
 	persona1 := Persona{"Reales", 20}
@@ -39,4 +44,14 @@ func main() {
 
 	persona2.editarNombre("Maria")
 	persona2.imprimir()
+
+	empleado := Empleado{
+		sueldo: 500,
+	}
+
+	empleado.nombre = "Reales"
+	empleado.edad = 32
+	empleado.imprimir()
+	fmt.Println(empleado)
+
 }
