@@ -25,6 +25,10 @@ type Empleado struct {
 	sueldo float64
 }
 
+func (e *Empleado) imprimirEmpleado() {
+	fmt.Printf("Nombre: %s, Edad: %d, Sueldo: %f ", e.nombre, e.edad, e.sueldo)
+}
+
 func main() {
 
 	persona1 := Persona{"Reales", 20}
@@ -53,5 +57,6 @@ func main() {
 	empleado.edad = 32
 	empleado.imprimir()
 	fmt.Println(empleado)
+	empleado.imprimirEmpleado()
 
 }
