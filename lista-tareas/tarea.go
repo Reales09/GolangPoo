@@ -2,6 +2,19 @@ package main
 
 import "fmt"
 
+//Lista de tareas
+type ListaTareas struct {
+	task []*Tarea
+}
+
+func (tl *ListaTareas) agregarTarea(t *Tarea) {
+	tl.task = append(tl.task, t)
+}
+
+func (tl *ListaTareas) removeTarea(index int) {
+	tl.task = append(tl.task[:index], tl.task[index+1:]...)
+}
+
 type Tarea struct {
 	nombre      string
 	descripcion string
@@ -30,7 +43,28 @@ func main() {
 		completado:  true,
 	}
 
-	t1.imprimir()
-	t2.imprimir()
+	lista := ListaTareas{}
+	lista.agregarTarea(&t1)
+	lista.agregarTarea(&t2)
 
+	fmt.Println(lista)
+	// t1.imprimir()
+	// t2.imprimir()
+
+	t3 := Tarea{
+		nombre:      "Curso de CSS",
+		descripcion: "Terminar el curso de CSS",
+		completado:  true,
+	}
+
+	lista.agregarTarea(&t3)
+
+	fmt.Println(lista)
+
+	lista.removeTarea(1)
+
+	for i, tarea := range lista.task {
+		fmt.Println(i, tarea)
+		tarea.imprimir()
+	}
 }
